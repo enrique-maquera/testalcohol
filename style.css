@@ -1,0 +1,142 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    width:100vw;
+    height:100vh;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    overflow:hidden;
+
+    font-family:Arial, sans-serif;
+
+    transition:all .5s ease;
+
+    background:white;
+}
+
+/* LOGO SUPERIOR */
+
+.logo-superior{
+    position:absolute;
+    top:20px;
+
+    width:min(250px,40vw);
+}
+
+/* TEXTO INICIAL */
+
+#mensajeInicio{
+    font-size:clamp(24px,4vw,50px);
+    font-weight:bold;
+    margin-top:120px;
+    margin-bottom:20px;
+}
+
+/* RULETA */
+
+.ruleta{
+
+    width:min(40vw,250px);
+    height:min(40vw,250px);
+
+    border-radius:50%;
+
+    background:
+    conic-gradient(
+        green 0deg 252deg,
+        red 252deg 360deg
+    );
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:clamp(40px,8vw,90px);
+
+    margin-bottom:30px;
+
+    transition:transform 1s;
+}
+
+/* BOTON */
+
+.btn-imagen{
+
+    width:min(200px,35vw);
+
+    cursor:pointer;
+
+    transition:transform .3s;
+}
+
+.btn-imagen:hover{
+    transform:scale(1.05);
+}
+
+/* RESULTADO */
+
+#resultado{
+
+    margin-top:30px;
+
+    font-size:clamp(35px,6vw,80px);
+
+    font-weight:bold;
+
+    text-align:center;
+}
+
+/* PIE */
+
+.pie{
+
+    position:absolute;
+
+    bottom:20px;
+
+    width:100%;
+
+    text-align:center;
+
+    font-weight:bold;
+
+    font-size:clamp(14px,2vw,24px);
+}
+
+/* FONDOS */
+
+.verde{
+    background:#0f9d58;
+    color:white;
+}
+
+.rojo{
+    background:#d93025;
+    color:white;
+}
+
+/* ANIMACION */
+
+.girando{
+
+    animation:girar 1s linear;
+}
+
+@keyframes girar{
+
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(1080deg);
+    }
+}
