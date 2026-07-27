@@ -11,12 +11,15 @@
 
 <body>
 
+    <button id="btnReporte" class="btn-reporte" type="button">Reporte diario</button>
+
     <!-- Logo y texto superior -->
     <div class="cabecera">
         <img src="Logo_KMMP.png" alt="Logo SOMMA" class="logo-superior">
         <div class="etiqueta-superior">ASMA NI 008 FR 004</div>
-        <div class="titulo-alcohotest">PRUEBA DE ALCOHOTEST</div>
     </div>
+
+    <div class="titulo-alcohotest">PRUEBA DE ALCOHOTEST</div>
 
     <!-- Mensaje inicial -->
     <div id="mensajeInicio">
@@ -33,11 +36,89 @@
     <!-- Resultado -->
     <div id="resultado"></div>
 
+    <audio id="audioPase" src="pase.mp3" preload="auto"></audio>
+    <audio id="audioPrueba" src="realizar prueba.mp3" preload="auto"></audio>
+
     <!-- Pie -->
     <div class="pie">
         SUCURSAL AREQUIPA KMMP
     </div>
 
+    <div id="modalRegistro" class="modal" aria-hidden="true">
+        <div class="modal-contenido" role="dialog" aria-modal="true" aria-labelledby="tituloRegistro">
+            <button id="cerrarModal" class="modal-cerrar" type="button" aria-label="Cerrar">&times;</button>
+            <h2 id="tituloRegistro">Registro de alcohotest</h2>
+            <p>Seleccione el resultado de la prueba de alcohotest.</p>
+            <form id="formRegistro" autocomplete="off">
+                <div class="opciones-prueba">
+                    <button id="btnPasoPrueba" class="btn-prueba btn-prueba-si" type="button" data-resultado="RESULTADO NEGATIVO">RESULTADO NEGATIVO</button>
+                    <button id="btnNoPasoPrueba" class="btn-prueba btn-prueba-no" type="button" data-resultado="RESULTADO POSITIVO">RESULTADO POSITIVO</button>
+                </div>
+
+                <div id="camposDni" hidden>
+                <label for="dniPersonal">DNI / código</label>
+                <input id="dniPersonal" name="dni" type="text" inputmode="numeric" pattern="[0-9]+" maxlength="12" required>
+                <div id="mensajeRegistro" class="mensaje-registro" aria-live="polite"></div>
+                <button class="btn-confirmar" type="submit">Buscar y registrar</button>
+
+                <div id="opcionesDniNoEncontrado" class="opciones-no-encontrado" hidden>
+                    <p>DNI no encontrado. Seleccione una opcion:</p>
+                    <button id="btnMostrarRegistroPersonal" class="btn-propio" type="button">Registrar datos</button>
+                    <button id="btnIngresoRapido" class="btn-rapido" type="button">Ingreso rapido</button>
+
+                    <div id="formPersonalNuevo" class="form-personal-nuevo" hidden>
+                        <label for="nombreNuevo">Nombre completo</label>
+                        <input id="nombreNuevo" type="text" autocomplete="off">
+
+                        <label for="puestoNuevo">Puesto</label>
+                        <input id="puestoNuevo" type="text" autocomplete="off">
+
+                        <label for="areaNueva">Area</label>
+                        <input id="areaNueva" type="text" autocomplete="off">
+
+                        <label for="sedeNueva">Sede</label>
+                        <input id="sedeNueva" type="text" autocomplete="off" value="SUCURSAL AREQUIPA KMMP">
+
+                        <button id="btnGuardarPersonalNuevo" class="btn-confirmar" type="button">Guardar datos y registrar</button>
+                    </div>
+                </div>
+                <button id="btnPersonalExterno" class="btn-externo" type="button">Personal externo / exoneracion</button>
+                </div>
+            </form>
+            <div id="datosPersonal" class="datos-personal" hidden></div>
+        </div>
+    </div>
+
+    <div id="modalReporte" class="modal" aria-hidden="true">
+        <div class="modal-contenido" role="dialog" aria-modal="true" aria-labelledby="tituloReporte">
+            <button id="cerrarReporte" class="modal-cerrar" type="button" aria-label="Cerrar">&times;</button>
+            <h2 id="tituloReporte">Reporte diario</h2>
+            <p id="resumenReporte"></p>
+            <div id="tablaReporte" class="tabla-reporte"></div>
+            <button id="cancelarReporte" class="btn-externo" type="button">Cerrar</button>
+            <div id="mensajeReporte" class="mensaje-registro" aria-live="polite"></div>
+        </div>
+    </div>
+
+    <div id="alertaPositivo" class="alerta-positivo" aria-hidden="true">
+        <div class="alerta-positivo-contenido" role="alertdialog" aria-modal="true">
+            <h2>ALERTA</h2>
+            <p id="textoAlertaPositivo"></p>
+            <button id="cerrarAlertaPositivo" type="button">Entendido</button>
+        </div>
+    </div>
+
+    <div id="alertaNegativo" class="alerta-negativo" aria-hidden="true">
+        <div class="alerta-negativo-contenido" role="alertdialog" aria-modal="true">
+            <h2>REGISTRO NEGATIVO</h2>
+            <div id="datosAlertaNegativo"></div>
+            <p class="mensaje-continua">El colaborador continúa.</p>
+            <button id="cerrarAlertaNegativo" type="button">Entendido</button>
+        </div>
+    </div>
+
+    <script src="xlsx.mini.min.js"></script>
+    <script src="personal.js"></script>
     <script src="script.js"></script>
 
 </body>
